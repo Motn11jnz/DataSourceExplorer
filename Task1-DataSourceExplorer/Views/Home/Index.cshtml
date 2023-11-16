@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model ConnectionViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Database Connection</h2>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+
+            <form asp-action="SqlConnection" asp-controller="Home" method="post" class="form">
+                <div class="form-group">
+                    <label for="ServerName" class="control-label">Server Name</label>
+                    <input type="text" id="ServerName" name="ServerName" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please enter the server name.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="DatabaseName" class="control-label">Database Name</label>
+                    <input type="text" id="DatabaseName" name="DatabaseName" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please enter the database name.
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Connect to Database</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
